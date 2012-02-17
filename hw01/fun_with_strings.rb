@@ -1,4 +1,4 @@
-#!/bin/ruby
+#!/usr/bin/ruby
 
 def palindrome?(string)
     clear_string = string.downcase.delete %Q{[\W\s().?,!-]}  
