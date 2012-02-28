@@ -1,21 +1,24 @@
 #!/usr/bin/ruby
 
 def combine_anagrams(words)
-    all_sorted = []
+    hash = {}
     anagrams = []
 
     words.each { |w| 
-        cur_sorted = w.downcase.each_char.sort.join 
+        sorted = w.downcase.each_char.sort.join 
 
-        anagrams << w if all_sorted.index(cur_sorted)
+        if (hash.has_key?(sorted))
+            hash[sorted].push w
+        else
+            hash[sorted] = Array.new.push(w)
+        end
     }
 
-    sorted.each { |w| 
-        puts w
+    hash.each_value { |v|
+        anagrams.push v
     }
 
-    anagrams.each { |i| puts words[i]}
-
+    return anagrams
 end
 
 
