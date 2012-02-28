@@ -1,4 +1,5 @@
 load 'rock_paper_scissors.rb'
+load 'test_helpers.rb'
 
 def test_wrong_number_of_players_rps_game_winner
     test_result = false
@@ -83,10 +84,6 @@ def test_tournament
     test_result = (rps_tournament_winner(tournament) == ["B1", "R"])
 
     return test_result 
-end
-
-def run_test(test_function, description)
-    print description, (send(test_function) ? ": PASS" : ": FAIL"), "\n"
 end
 
 run_test :test_wrong_number_of_players_rps_game_winner, "Wrong number of players test"
