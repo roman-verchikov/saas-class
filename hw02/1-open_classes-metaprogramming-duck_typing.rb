@@ -38,15 +38,10 @@ end
 # writing palindrome?  ("foo") you can write "foo".palindrome? HINT: this
 # should require fewer than 5 lines of code.
 
-
-def palindrome?(string)
-    clear_string = string.downcase.delete %Q{\W\s().?,!-]}
-    clear_string == clear_string.reverse
-end
-
 class String
-    def method_missing(method_id)
-        palindrome?(self)
+    def palindrome?
+        clear_string = self.downcase.gsub(/\W/, '')
+        clear_string == clear_string.reverse
     end
 end
 
@@ -61,4 +56,9 @@ end
 # Enumerables, your solution does not need to make sense for hashes (though it
 # should not error).
 
+module Enumerable
+    def palindrome?
+        self.entries.respond_to?(:reverse) ? self.entries == self.entries.reverse : false
+    end
+end
 
